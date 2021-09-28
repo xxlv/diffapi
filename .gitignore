@@ -7,3 +7,4 @@ dataprovider
 com.diff.iml
 .idea
 target
+.DS_Store
