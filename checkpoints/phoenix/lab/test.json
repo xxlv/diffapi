@@ -1,0 +1,17 @@
+{
+  "id": "newtest",
+  "author": "innovation",
+  "mode": "UNK",
+  "desc": "接口测试，在node下配置需要测试的节点，在payload提供参数，在rules 中定义校验规则.",
+  "node": {
+    "id": "your-api-id",
+    "api": "your-api-address",
+    "payload": [
+      "{\"ids\":[$ID]}"
+    ]
+  },
+  "rules": [
+    "$1.success==true",
+    "$1.result.values()[0].size()>0"
+  ]
+}

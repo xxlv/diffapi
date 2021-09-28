@@ -1,0 +1,62 @@
+@startuml
+
+' 定义比较节点的核心数据
+' 可以参与
+
+entity Diff
+
+Diff->checkPoints:加载配置
+Diff->Diff: 装载配置
+
+Diff->diffGroup:装载到diffGroup
+
+
+par <font color=red>payload解析
+
+diffGroup->diffGroup: 扫描json 获取payloads
+
+diffGroup->payloadCompileEngine:编译payload
+
+payloadCompileEngine->diffGroup: 将payload 注册进diffGroup
+
+diffGroup->diffNode: 根据payloads 生成diffNode
+
+end
+diffGroup->diffGroup: 完成payload install
+
+diffGroup->diffGroup:apply
+
+
+par do apply
+diffGroup->diffNode : invoke with payload
+diffNode->diffApi: invoke
+diffApi->client: http request
+diffNode->diffGroup: returns diffResult
+end
+
+
+
+
+par <font color=red>规则解析
+diffGroup->diffRule: 加载规则（根据配置json or 自定义接口）
+alt 存在json表达式
+diffRule->ruleCompileEngine: 编译rule
+
+diffRule->diffRule: 注册json编译的rule
+end
+
+alt 存在自定义规则
+diffRule->diffRule:加载自定义规则并注册（交给groovy engine）
+
+end
+
+diffRule->diffRule: check rule use diffResult
+end
+
+
+
+diffGroup->diffGroup:生成report
+Diff->diffGroup: handle report
+
+
+@enduml

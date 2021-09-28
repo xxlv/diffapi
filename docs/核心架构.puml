@@ -1,0 +1,49 @@
+@startuml
+
+' 定义比较节点的核心数据
+' 可以参与
+
+class diff.DiffNode{
+
+    + id
+    + name
+    + params
+    + api
+}
+
+class NodeApi{
+    + serverName
+    + methodName
+    + apiAddress
+    + httpMethod
+    + request()
+
+}
+
+class diff.DiffGroup{
+
+    + leftNode
+    + rightNode
+    + rules
+    + apply()
+}
+
+
+class diff.DiffRule{
+    + expList
+    + compile()
+    + check()
+}
+
+class diff.DiffReport{
+   + groupId
+   + checkResults
+}
+
+
+diff.DiffGroup.->diff.DiffReport: gen
+diff.DiffGroup-->diff.DiffNode: has more
+diff.DiffNode-->NodeApi: contains
+diff.DiffGroup-->diff.DiffRule: contains
+
+@enduml

@@ -1,0 +1,9 @@
+.idea
+./reports/
+/.idea
+dataprovider
+.diffcache
+.gradle
+com.diff.iml
+.idea
+target

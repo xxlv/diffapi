@@ -1,0 +1,23 @@
+{
+  "scope": "global",
+  "desc": "全局配置",
+  "metadata": {
+    "activeEnv": "test"
+  },
+  "project": {
+    "name": "diffapi",
+    "desc": "测试项目",
+    "version": "2.0",
+    "authors": [
+      "innovation"
+    ]
+  },
+  "left": {
+    "apiAddress": "https://test1.com",
+    "method": "post"
+  },
+  "right": {
+    "apiAddress": "https://test2.com",
+    "method": "post"
+  }
+}

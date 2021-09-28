@@ -1,0 +1,22 @@
+{
+  "id": "newtest-same",
+  "author": "innovation",
+  "mode": "SAME",
+  "desc": "Same 测试",
+  "left": {
+    "api": "your-api-address"
+  },
+  "right": {
+    "api": "your-api-address"
+  },
+  "rules": [
+    "$1.success==true",
+    "$1.result.values()[0].size()>0",
+    "py:result=len(_vars['$1']['result'].keys())>0",
+    "py:result=True\nimport time\nprint(time.time())"
+
+  ],
+  "sharedPayloads": [
+    "{\"ids\":[$ID]}"
+  ]
+}

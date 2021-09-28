@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="30 seconds">
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <property name="PATH" value="./logs/diffAPI"/>
+  <property name="STDOUT_PATTERN" value="%d [%t] %5p %c - %m%n"/>
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>${STDOUT_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="BIZ_LOG"/>
+  </root>
+</configuration>
